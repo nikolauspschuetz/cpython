@@ -1293,6 +1293,8 @@ class NormalDist:
         Set *n* to 100 for percentiles which gives the 99 cuts points that
         separate the normal distribution in to 100 equal sized groups.
         """
+        if n < 1:
+            raise StatisticsError('n must be at least 1')
         return [self.inv_cdf(i / n) for i in range(1, n)]
 
     def overlap(self, other):
